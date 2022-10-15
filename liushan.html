@@ -1,0 +1,154 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>刘珊--护士执业证书--医政信息展示</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://license.wsb003.cn/Content/icos/nurse.ico" mce_href="https://license.wsb003.cn/Content/icos/nurse.ico" type="image/x-icon">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://comres.cndocsys.cn/licensedisp/css/nurse-Mobile-v2.css" />
+    <style>
+        @media(max-width:374px){.footer{padding-left:40px;padding-right:40px}.main{padding-left:40px;padding-right:40px;margin-top:26px}}@media(min-width:415px){.head{float:right;width:88px;height:120px;margin-top:2px}}@media(min-width:500px){.footer{padding-left:100px;padding-right:100px}.main{padding-left:100px;padding-right:100px;margin-top:26px}.head{float:right;width:88px;height:120px;margin-top:2px}}@media(min-width:600px){.footer{padding-left:120px;padding-right:120px}.main{padding-left:120px;padding-right:120px;margin-top:26px}.head{float:right;width:88px;height:120px;margin-top:2px}}@media(min-width:700px){.head{float:right;width:102px;height:140px;margin-top:2px}}@media(min-width:754px){.head{float:right;width:102px;height:140px;margin-top:2px}.wrap_qn{width:754px;margin:0 auto}}
+    </style>
+    <style>
+        .head {
+            float: right;
+            width: 96px;
+            height: 130px;
+            margin-top: 2px;
+        }
+        .block {
+            margin-bottom: 36px;
+            overflow: inherit;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false" ondragstart="return false;" style="background-color:#fff">
+    <div class="content">
+        <div class="wrap_qn">
+            <div class="title"> 
+                <div>护士执业证书</div>
+            </div>
+                    <div class="main">
+                        <div class="block">                  
+                            <img id="photo" src="./liushan.jpg" class="head"/>
+                            <div class="li">
+                                <span class="key">姓名:</span>
+                                <span class="value" style="font-size: 16px;">刘珊</span>
+                            </div>
+                            <div class="li">
+                                <span class="key">性别:</span>
+                                <span class="value">女</span>
+                            </div>
+                            <div class="li">
+                                <span class="key">出生年月:</span>
+                                <span class="value">1988年11月</span>
+                            </div>
+                        </div>
+                        <div class="flexBlock">
+                            <div class="BWrapBlock">
+                                        <div class="Bli">
+                                            <span class="key">执业地点:</span>
+                                                    <span class="value">武汉市黄陂区环城卫生社区服务中心</span>
+</span>
+
+                                        </div>
+
+
+                                <div class="Bli">
+                                    <span class="key">技术职称:</span>
+                                    <span class="value">护士</span>
+                                </div>
+                                <div class="Bli">
+                                    <span class="key">护士执业证书编号:</span>
+                                    <span class="value">201642013610</span>
+                                </div>
+                                <div class="Bli">
+                                    <span class="key">注册有效期至:</span>
+                                    <span class="value">2026年05月23日</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flexBlock">
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="er">
+                            <div style="width: 86px; height: 86px; display: inline-block;">
+                                
+                                
+                                <div id="newErCode"></div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="Bli">
+                                <span class="fkey">签发机关 &nbsp;</span>
+                                <span class="fvalue">湖北省卫生和计划生育委员会</span>
+                            </div>
+                            <div class="Bli">
+                                <span class="fkey">签发日期 &nbsp;</span>
+                                <span class="fvalue">2016年05月20日</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+        </div>
+    </div>
+            <script src="https://cdn.staticfile.org/jquery/2.2.3/jquery.min.js"></script>
+            <script src="https://cdn.staticfile.org/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        var NG = '6dd3d508-ac61-4374-b310-fcb161b1a922';
+        $(function () {
+             if (NG !== '') {                
+                //loadCurrPhotoTianCloud();
+                //
+                getQr();
+            }  
+        });
+        //get cloud photo
+        function loadCurrPhotoTianCloud() {
+            $.post("/License/GetNursePhotoUri", { ni: NG,jstk:"637991834999781501",jssn:"A73CDCBA99B3C6658806EE1EF9EEFC3E", t: new Date().valueOf() }, function (data) {
+                if (data.result) {
+                    $("#photo").attr("src", data.message);
+                    $("#photo").attr("onerror", "phoError(this)");
+                }
+                else {
+                    $("#photo").attr("src", "https://comres.cndocsys.cn/no_photo2.jpg");
+                }
+                $("#photo").show();
+            });
+        }
+        function imgErrorEvent(dom) {
+            dom.src = "https://comres.cndocsys.cn/no_photo2.jpg";
+            dom.onerror = null;
+        }
+        //
+        function getQr() {
+            new QRCode("newErCode", {
+                text: "https://liu741.github.io/liushan.html",
+                width: 86,
+                height: 86,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>
+
+x1.00
